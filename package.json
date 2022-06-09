@@ -1,0 +1,13 @@
+{
+    "name": "js-login",
+    "version": "1.0.0",
+    "description": "",
+    "main": "init.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "proxy": "http://localhost:5000",
+    "author": "Raj Ganesh",
+    "license": "ISC"
+  }
+  
