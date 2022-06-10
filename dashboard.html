@@ -16,26 +16,71 @@
         <p class="text-center"><a href="#" class="logout">Log Out</a></p>
     </div>
     <div class="file">
-        <h3>Files <i class="fa fa-file fa_file_custom"></i></h3>
+        <h3>Files <i class="fa fa-file fa_file_custom"></i> <button id="file-refresh-button" >Refresh</button></h3>
+        
         <table id="file-table">
-            <tr>
-                <th>Name</th>
-                <th>Created At</th>
-                <th>Content</th>
-                <th>ID</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Created At</th>
+                    <th>Content</th>
+                    <th>Folder ID</th>
+                </tr>
+            </thead>
+            <tbody id="file-table-body">
+
+            </tbody>
         </table>
+        <form onsubmit="event.preventDefault()" class="fileForm" id="fileForm">
+            <h3>Create File</h3>
+            <div class="ff-input-group">
+                <label for="filename" class="ff-label">Enter filename:</label>
+                <input type="text" id="filename" class="ff-input">
+            </div>
+            <br>
+            <div class="ff-input-group">
+                <label for="folderid" class="ff-label">Enter folder Id:</label>
+                <input type="text" id="folderid" class="ff-input">
+            </div>
+            <br>
+            <div class="ff-input-group">
+                <label for="filecontent" class="ff-label">Enter content:</label>
+                <textarea type="text" id="filecontent" class="ff-input"></textarea>
+            </div>
+            <br>
+            <button class="ff-button" type="submit">Create</button>
+            <div id="file-status"> </div>
+        </form>
     </div>
     <div class="folder">
-        <h3>Folders <i class="fa fa-folder fa_folder_custom"></i>
-        </h3> 
+        <h3>Folders <i class="fa fa-folder fa_folder_custom"></i> <button id="folder-refresh-button" >Refresh</button> </h3>
         <table id="folder-table">
-            <tr>
-                <th>Name</th>
-                <th>Created At</th>
-                <th>ID</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Created At</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody id="folder-table-body">
+
+            </tbody>
         </table>
+        <form onsubmit="event.preventDefault()" class="folderForm" id="folderForm">
+            <h3>Create Folder</h3>
+            <div class="ff-input-group">
+                <label for="foldername" class="ff-label">Enter foldername:</label>
+                <input type="text" id="foldername" class="ff-input">
+            </div>
+            <br>
+            <div class="ff-input-group">
+                <label for="folderid" class="ff-label">Enter folder Id:</label>
+                <input type="text" id="folderid" class="ff-input">
+            </div>
+            <br>
+            <button class="ff-button" type="submit">Create</button>
+            <div id="file-status"> </div>
+        </form>
     </div>
     <script defer src="/js/dashboard.js"></script>
 </body>
