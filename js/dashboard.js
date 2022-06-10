@@ -7,8 +7,6 @@ class dashboard {
         this.clearList();
         const id = this.getUserId();
         const token = this.getAccessToken();
-        let myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`)
         const url = `http://localhost:6002/v1/home/${id}`;
         let requestOptions = {
             method: 'GET',
@@ -21,8 +19,6 @@ class dashboard {
           };
         const response = await fetch(url, requestOptions);
         const data = await response.json();
-        // let filesHtml = '';
-        let foldersHtml = '';
         data.forEach((val) => {
             if(val.folder_id == undefined) {
                 let tdName = document.createElement("td");
