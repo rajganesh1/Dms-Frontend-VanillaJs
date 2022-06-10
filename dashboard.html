@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script defer src="/js/auth.js"></script>
     <script defer src="/init.js"></script>
 </head>
@@ -14,5 +15,28 @@
         <h1 class="text-center">Welcome to the Dashboard</h1>
         <p class="text-center"><a href="#" class="logout">Log Out</a></p>
     </div>
+    <div class="file">
+        <h3>Files <i class="fa fa-file fa_file_custom"></i></h3>
+        <table id="file-table">
+            <tr>
+                <th>Name</th>
+                <th>Created At</th>
+                <th>Content</th>
+                <th>ID</th>
+            </tr>
+        </table>
+    </div>
+    <div class="folder">
+        <h3>Folders <i class="fa fa-folder fa_folder_custom"></i>
+        </h3> 
+        <table id="folder-table">
+            <tr>
+                <th>Name</th>
+                <th>Created At</th>
+                <th>ID</th>
+            </tr>
+        </table>
+    </div>
+    <script defer src="/js/dashboard.js"></script>
 </body>
 </html>
