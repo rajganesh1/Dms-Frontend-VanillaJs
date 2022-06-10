@@ -19,8 +19,8 @@ class dashboard {
             },
             redirect: 'follow'
           };
-        const responce = await fetch(url, requestOptions);
-        const data = await responce.json();
+        const response = await fetch(url, requestOptions);
+        const data = await response.json();
         // let filesHtml = '';
         let foldersHtml = '';
         data.forEach((val) => {
@@ -45,11 +45,14 @@ class dashboard {
                 tdContent.innerHTML = val.content;
                 let tdId = document.createElement("td");
                 tdId.innerHTML = val.folder_id;
+                let tdFileid = document.createElement("td");
+                tdFileid.innerHTML = val.id;
                 let tr = document.createElement("tr");
                 tr.appendChild(tdName);
                 tr.appendChild(tdCreatedAt);
                 tr.appendChild(tdContent);
                 tr.appendChild(tdId);
+                tr.appendChild(tdFileid);
                 document.getElementById("file-table-body").appendChild(tr); 
             }
         })
@@ -104,10 +107,9 @@ class dashboard {
     async folderSubmit(event){
         try{
             const foldername=event.target[0].value;
-            const folderId=event.target[1].value;
             const url = `http://localhost:6002/v1/folder/`;
             let body=JSON.stringify({
-                "id" : folderId,
+                "id": Math.floor(1000 + Math.random() * 9000) + '',
                 "name" : foldername,
                 "owner_id" : localStorage.getItem('id'),
                 "createdAt" : new Date().toLocaleDateString()

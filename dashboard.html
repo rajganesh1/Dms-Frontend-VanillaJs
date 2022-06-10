@@ -25,6 +25,7 @@
                     <th>Created At</th>
                     <th>Content</th>
                     <th>Folder ID</th>
+                    <th>File ID</th>
                 </tr>
             </thead>
             <tbody id="file-table-body">
@@ -63,7 +64,7 @@
                 </tr>
             </thead>
             <tbody id="folder-table-body">
-
+            
             </tbody>
         </table>
         <form onsubmit="event.preventDefault()" class="folderForm" id="folderForm">
@@ -73,13 +74,8 @@
                 <input type="text" id="foldername" class="ff-input">
             </div>
             <br>
-            <div class="ff-input-group">
-                <label for="folderid" class="ff-label">Enter folder Id:</label>
-                <input type="text" id="folderid" class="ff-input">
-            </div>
-            <br>
             <button class="ff-button" type="submit">Create</button>
-            <div id="file-status"> </div>
+            <div id="folder-status"> </div>
         </form>
     </div>
     <script defer src="/js/dashboard.js"></script>
