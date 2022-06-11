@@ -58,6 +58,7 @@ class dashboard {
         document.getElementById("file-table-body").innerHTML = '';
         document.getElementById("folder-table-body").innerHTML = '';
         document.getElementById("file-status").innerHTML = '';
+        document.getElementById("folder-status").innerHTML='';
     }
 
     async fileSubmit(event) {
@@ -134,6 +135,71 @@ class dashboard {
         }
     }
 
+    async folderRemove(event){
+        try{
+            const folderID=event.target[0].value;
+            const url = `http://localhost:6002/v1/delete-folder/`;
+
+            let body= JSON.stringify({
+                "id" : folderID,
+                "user_id" : localStorage.getItem('id')
+            });
+
+            let requestOptions = {
+                method: 'DELETE',
+                headers:{
+                    "accept": "*/*",
+                    'Content-Type': "application/json",
+                    'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+                },
+                redirect: 'follow',
+                body : body
+            };
+
+            const response = await fetch(url, requestOptions);
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            const result = await response.text();
+            document.getElementById("folder-status1").innerHTML = result;
+        } catch (err){
+            document.getElementById("folder-status1").innerHTML = err;
+            console.log(err);
+        }
+    }
+
+    async fileRemove(event){
+        try{
+            const fileID=event.target[0].value;
+            const url = `http://localhost:6002/v1/delete-file/`;
+
+            let body= JSON.stringify({
+                "id" : fileID,
+                "user_id" : localStorage.getItem('id')
+            });
+
+            let requestOptions = {
+                method: 'DELETE',
+                headers:{
+                    "accept": "*/*",
+                    'Content-Type': "application/json",
+                    'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+                },
+                redirect: 'follow',
+                body : body
+            };
+
+            const response = await fetch(url, requestOptions);
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            const result = await response.text();
+            document.getElementById("file-status1").innerHTML = result;
+        } catch (err){
+            document.getElementById("file-status1").innerHTML = err;
+            console.log(err);
+        }
+    }
 
     getUserId() {
         return localStorage.getItem('id');
@@ -146,17 +212,25 @@ class dashboard {
 
 const instance=new dashboard();
 
-const form = document.getElementById('fileForm');
-form.addEventListener('submit', instance.fileSubmit);
+const fileform = document.getElementById('fileForm');
+fileform.addEventListener('submit', instance.fileSubmit);
 
 document.getElementById("file-refresh-button").addEventListener("click",(e)=>{
     instance.getFilesAndFolderList();
 });
 
-const form1 = document.getElementById('folderForm');
-form1.addEventListener('submit',instance.folderSubmit);
+const folderform = document.getElementById('folderForm');
+folderform.addEventListener('submit',instance.folderSubmit);
 
 document.getElementById("folder-refresh-button").addEventListener("click",(e)=>{
     instance.getFilesAndFolderList();
 });
+
+
+
+const newfileform = document.getElementById('fileForm1');
+newfileform.addEventListener('submit', instance.fileRemove);
+
+const newfolderform = document.getElementById('folderForm1');
+newfolderform.addEventListener('submit', instance.folderRemove);
 

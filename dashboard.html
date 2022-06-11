@@ -51,6 +51,18 @@
             <br>
             <button class="ff-button" type="submit">Create</button>
             <div id="file-status"> </div>
+            <br>
+        </form>
+        <br>
+        <form onsubmit="event.preventDefault()" class="fileForm1" id="fileForm1">
+            <h3>Delete File</h3>
+            <div class="ff-input-group">
+                <label for="fileId" class="ff-label">Enter fileId:</label>
+                <input type="text" id="fileId" class="ff-input">
+            </div>
+            <br>
+            <button class="ff-button" type="submit">Delete</button>
+            <div id="file-status1"> </div>
         </form>
     </div>
     <div class="folder">
@@ -75,6 +87,17 @@
             <br>
             <button class="ff-button" type="submit">Create</button>
             <div id="folder-status"> </div>
+        </form>
+        <br>
+        <form onsubmit="event.preventDefault()" class="folderForm1" id="folderForm1">
+            <h3>Delete Folder</h3>
+            <div class="ff-input-group">
+                <label for="folderId" class="ff-label">Enter folderId:</label>
+                <input type="text" id="folderId" class="ff-input">
+            </div>
+            <br>
+            <button class="ff-button" type="submit">Delete</button>
+            <div id="folder-status1"> </div>
         </form>
     </div>
     <script defer src="/js/dashboard.js"></script>
