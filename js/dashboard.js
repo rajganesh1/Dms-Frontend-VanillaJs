@@ -1,13 +1,25 @@
 class dashboard {
     constructor() {
+        this.folderId = '1000';
         this.getFilesAndFolderList();
+    }
+
+    setFolderID(id) {
+        this.folderId = id;
     }
 
     async getFilesAndFolderList() {
         this.clearList();
         const id = this.getUserId();
         const token = this.getAccessToken();
-        const url = `http://localhost:6002/v1/home/${id}`;
+        let url = '';
+        console.log(this.folderId);
+        if(this.folderId == '1000'){
+            url = `http://localhost:6002/v1/home/${id}`;
+        }
+        else{
+            url = `http://localhost:6002/v1/file/${id}/${this.folderId}`;
+        }
         let requestOptions = {
             method: 'GET',
             headers:{
@@ -212,14 +224,14 @@ class dashboard {
 
 const instance=new dashboard();
 
-const fileform = document.getElementById('fileForm');
+const fileform = document.getElementById('createfileForm');
 fileform.addEventListener('submit', instance.fileSubmit);
 
 document.getElementById("file-refresh-button").addEventListener("click",(e)=>{
     instance.getFilesAndFolderList();
 });
 
-const folderform = document.getElementById('folderForm');
+const folderform = document.getElementById('createfolderForm');
 folderform.addEventListener('submit',instance.folderSubmit);
 
 document.getElementById("folder-refresh-button").addEventListener("click",(e)=>{
@@ -228,9 +240,13 @@ document.getElementById("folder-refresh-button").addEventListener("click",(e)=>{
 
 
 
-const newfileform = document.getElementById('fileForm1');
+const newfileform = document.getElementById('deletefileForm');
 newfileform.addEventListener('submit', instance.fileRemove);
 
-const newfolderform = document.getElementById('folderForm1');
+const newfolderform = document.getElementById('deletefolderForm');
 newfolderform.addEventListener('submit', instance.folderRemove);
 
+document.getElementById("searchfileForm").addEventListener('submit',(e)=>{
+    instance.setFolderID(e.target[0].value);
+    instance.getFilesAndFolderList();
+});

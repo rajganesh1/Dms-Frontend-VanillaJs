@@ -32,7 +32,18 @@
 
             </tbody>
         </table>
-        <form onsubmit="event.preventDefault()" class="fileForm" id="fileForm">
+        <br>
+        <form onsubmit="event.preventDefault()" class="fileForm0" id="searchfileForm">
+            <h3>View Files</h3>
+            <div class="ff-input-group">
+                <label for="folderId" class="ff-label">Enter folderId:</label>
+                <input type="text" id="folderId" class="ff-input">
+            </div>
+            <br>
+            <button class="ff-button" type="submit">Search</button>
+        </form>
+        <br>
+        <form onsubmit="event.preventDefault()" class="fileForm" id="createfileForm">
             <h3>Create File</h3>
             <div class="ff-input-group">
                 <label for="filename" class="ff-label">Enter filename:</label>
@@ -54,7 +65,7 @@
             <br>
         </form>
         <br>
-        <form onsubmit="event.preventDefault()" class="fileForm1" id="fileForm1">
+        <form onsubmit="event.preventDefault()" class="fileForm1" id="deletefileForm">
             <h3>Delete File</h3>
             <div class="ff-input-group">
                 <label for="fileId" class="ff-label">Enter fileId:</label>
@@ -78,7 +89,7 @@
             <tbody id="folder-table-body">
             </tbody>
         </table>
-        <form onsubmit="event.preventDefault()" class="folderForm" id="folderForm">
+        <form onsubmit="event.preventDefault()" class="folderForm" id="createfolderForm">
             <h3>Create Folder</h3>
             <div class="ff-input-group">
                 <label for="foldername" class="ff-label">Enter foldername:</label>
@@ -89,7 +100,7 @@
             <div id="folder-status"> </div>
         </form>
         <br>
-        <form onsubmit="event.preventDefault()" class="folderForm1" id="folderForm1">
+        <form onsubmit="event.preventDefault()" class="folderForm1" id="deletefolderForm">
             <h3>Delete Folder</h3>
             <div class="ff-input-group">
                 <label for="folderId" class="ff-label">Enter folderId:</label>
